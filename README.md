@@ -44,7 +44,7 @@ If you find any, please file an issue report and provide whatever information yo
 - Added two new menu commands, one for toggling convars and the other for giving yourself snails-pace-projectile-speed rocket launchers to test the rockets.
 
 #### Credits:
-- [ELbagast](http://steamcommunity.com/profiles/76561197970342156) - The guy that made the rocket models.
+- [Elbagast](http://steamcommunity.com/profiles/76561197970342156) - The guy that made the rocket models.
 - [N-Cognito](http://steamcommunity.com/profiles/76561198028539550/) - Separated the rocket models from an old viewmodel mod Elbagast released, and converted them into proper models for me. Also created all the new rocket models to complete the set.
 
 #### Preview Image:
