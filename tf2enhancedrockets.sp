@@ -9,6 +9,7 @@
  * Elbagast - Created models for the Direct Hit, Black Box, Rocket Jumper, Liberty Launcher and the Original
  * N-Cognito - Created models for everything else (big thanks!)
  * Benoist3012 - Model index overrides suggestion + many other helpful tips
+ * nosoop - Australium weapon check
  *
  */
 #include <sourcemod>
@@ -24,7 +25,7 @@
 #pragma semicolon 1
 #pragma newdecls required
 
-#define PLUGIN_VERSION "2.0"
+#define PLUGIN_VERSION "19w34a"
 
 ConVar g_cvEnablePlugin;
 ConVar g_cvEnableFestives;
@@ -583,7 +584,7 @@ public int MenuHandler_RocketMenu(Menu hRocketMenu, MenuAction iAction, int iCli
 			TF2Items_SetNumAttributes(hWeapon, 1);
 			TF2Items_SetAttribute(hWeapon, 0, 104, 0.0001);
 		}
-		TF2_RemoveWeaponSlot(iClient, view_as<int>(TFWeaponSlot_Primary));
+		TF2_RemoveWeaponSlot(iClient, TFWeaponSlot_Primary);
 		int iNewWeapon = TF2Items_GiveNamedItem(iClient, hWeapon);
 
 		if (IsValidEntity(iNewWeapon))
@@ -809,7 +810,6 @@ bool TF2_IsWeaponAustralium(int iWeapon)
 	{
 		if(TF2Attrib_GetByName(iWeapon, "is australium item") != Address_Null)
 		{
-			PrintToChatAll("fuckin eh");
 			return true;
 		}
 		else
@@ -824,7 +824,6 @@ bool TF2_IsWeaponAustralium(int iWeapon)
 			{
 				if(iAttribIndices[i] == 2027)
 				{
-					PrintToChatAll("fuckin eh");
 					return true;
 				}
 			}
