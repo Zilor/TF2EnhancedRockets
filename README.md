@@ -1,20 +1,14 @@
-# TF2EnhancedRockets
+# TF2EnhancedRockets - Fork
 Adds in [Elbagast's custom rocket models](http://elbagast.deviantart.com/art/TF2-Rocket-Models-269142041), along with some new custom rockets.
 
+This fork tries to minimize the overhead and removes some addtional weapons.
+
 #### Requirements:
-- [TF2Items](https://builds.limetech.io/?p=tf2items) - Required for the `sm_er2rockets` command
-- [TF2Attributes](https://github.com/FlaminSarge/tf2attributes) - Required for Australium rockets to work, but not ultimately *required* as the plugin should detect the lack of TF2Attributes and use the normal non-Australium version of the rockets.
+- None
 
 #### Commands:
-- `sm_er2rockets` - Opens the rocket testing menu. The menu is to give yourself any Rocket Launcher with a modified incredibly slow projectile speed that allows you check and make sure the plugin is working and models are being changed.
-- `sm_er2settings` - Opens the convar menu allowing you to change convar values on the fly after setting them in your server's `server.cfg` file.
-
+- None
 #### ConVars:
-- `sm_er2_version` - Standard version convar. *Do not touch!*
-- `sm_er2_enable` - Enable Enhanced Rockets plugin? *[0/1] (Default: 1)*
-- `sm_er2_festives` - Enable Festive stock/Black Box rockets? [0/1] *(Default: 0)*
-- `sm_er2_australiums` - Enable Australium stock/Black Box rockets? *[0/1] (Default: 0)*
-- `sm_er2_botkillers` - Enable Botkiller rockets? *[0/1] (Default: 0)*
 - `sm_er2_tcdirecthit` - Enable team-colored Direct Hit rocket skins? *[0/1] (Default: 0)*
 - `sm_er2_tcrocketjumper` - Enable BLU cream spirit team-colored Rocket Jumper rocket skin? *[0/1] (Default: 0)*
 
@@ -42,6 +36,14 @@ If you find any, please file an issue report and provide whatever information yo
 - Added Botkiller rockets, Australium rockets, Festive rockets, Beggar's Bazooka rocket, enhanced Stock rocket
 - Added new convars to enable/disable certain "extra" rockets
 - Added two new menu commands, one for toggling convars and the other for giving yourself snails-pace-projectile-speed rocket launchers to test the rockets.
+
+**2.0-GMD**
+- Removed Botkiller, Australium, Festive & enhanced stock rockets
+- Removed cvars for the aforementioned rockets & enable plugin cvar
+- Removed the menu/chat commands
+- Removed the extra dependcy
+- Added check to prevent the model change when the models are not precached, downloaded
+- Improved/Changed Code syntax to gatekeeper condition
 
 #### Credits:
 - [Elbagast](http://steamcommunity.com/profiles/76561197970342156) - The guy that made the rocket models.
