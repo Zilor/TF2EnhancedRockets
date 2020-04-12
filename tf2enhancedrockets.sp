@@ -49,6 +49,8 @@ int iRocketBKHeavy2 = -1;
 int iRocketBKEngy = -1;
 
 bool g_bTF2Attributes;
+bool g_bFestives;
+bool g_bBotkillers;
 
 public Plugin myinfo =
 {
@@ -102,6 +104,9 @@ public void OnLibraryAdded(const char[] strName)
 
 public void OnMapStart()
 {
+	g_bFestives = g_cvEnableFestives.BoolValue;
+	g_bBotkillers = g_cvEnableBotkillers.BoolValue;
+	
 	if(g_cvEnablePlugin.BoolValue == true)
 	{
 		// Stock Rocket Enhanced/Festive Stock Rocket - Models created by N-Cog
@@ -115,12 +120,15 @@ public void OnMapStart()
 		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_enhanced.phy");
 		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_enhanced.sw.vtx");
 		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_enhanced.vvd");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.dx80.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.dx90.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.mdl");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.phy");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.sw.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.vvd");
+		if(g_bFestives == true)
+		{
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.dx80.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.dx90.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.mdl");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.phy");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.sw.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festive.vvd");
+		}
 
 		// Direct Hit Rocket - Model created by Elbagast
 		AddFileToDownloadsTable("materials/models/enhancedrockets2/w_rocket_directhit.vmt");
@@ -148,12 +156,15 @@ public void OnMapStart()
 		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_blackbox.phy");
 		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_blackbox.sw.vtx");
 		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_blackbox.vvd");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.dx80.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.dx90.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.mdl");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.phy");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.sw.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.vvd");
+		if (g_bFestives == true)
+		{
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.dx80.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.dx90.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.mdl");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.phy");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.sw.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_festiveblackbox.vvd");
+		}
 		
 		// Rocket Jumper Rocket - Model created by Elbagast
 		AddFileToDownloadsTable("materials/models/enhancedrockets2/w_rocket_rocketjumper.vmt");
@@ -195,33 +206,39 @@ public void OnMapStart()
 		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_beggarsbazooka.sw.vtx");
 		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_beggarsbazooka.vvd");
 		
-		// Botkiller v2 Rocket (Gold/Silver) - Model created by N-Cog
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.dx80.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.dx90.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.mdl");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.phy");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.sw.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.vvd");
+		if (g_bBotkillers == true)
+		{
+			// Botkiller v2 Rocket (Gold/Silver) - Model created by N-Cog
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.dx80.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.dx90.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.mdl");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.phy");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.sw.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkengy.vvd");
 
-		// Botkiller v1 Rocket (Silver/Gold/Blood/Rust) - Model created by N-Cog
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.dx80.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.dx90.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.mdl");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.phy");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.sw.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.vvd");
+			// Botkiller v1 Rocket (Silver/Gold/Blood/Rust) - Model created by N-Cog
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.dx80.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.dx90.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.mdl");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.phy");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.sw.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy.vvd");
 
-		// Botkiller v1 Rocket (Carbonado/Diamond) - Model created by N-Cog
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.dx80.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.dx90.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.mdl");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.phy");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.sw.vtx");
-		AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.vvd");
+			// Botkiller v1 Rocket (Carbonado/Diamond) - Model created by N-Cog
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.dx80.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.dx90.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.mdl");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.phy");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.sw.vtx");
+			AddFileToDownloadsTable("models/enhancedrockets2/w_rocket_bkheavy2.vvd");
+		}
 		
 		// Precache the models
 		iRocketEnhanced = PrecacheModel("models/enhancedrockets2/w_rocket_enhanced.mdl", true);
-		iRocketFestive = PrecacheModel("models/enhancedrockets2/w_rocket_festive.mdl", true);
+		if (g_bFestives == true)
+		{
+			iRocketFestive = PrecacheModel("models/enhancedrockets2/w_rocket_festive.mdl", true);
+		}
 		iRocketDirectHit = PrecacheModel("models/enhancedrockets2/w_rocket_directhit.mdl", true);
 		iRocketBlackBox = PrecacheModel("models/enhancedrockets2/w_rocket_blackbox.mdl", true);
 		iRocketFestiveBlackBox = PrecacheModel("models/enhancedrockets2/w_rocket_blackbox_festive.mdl", true);
@@ -229,9 +246,12 @@ public void OnMapStart()
 		iRocketOriginal	= PrecacheModel("models/enhancedrockets2/w_rocket_original.mdl", true);
 		iRocketRocketJumper = PrecacheModel("models/enhancedrockets2/w_rocket_rocketjumper.mdl", true);
 		iRocketBeggarsBazooka = PrecacheModel("models/enhancedrockets2/w_rocket_beggarsbazooka.mdl", true);
-		iRocketBKHeavy1 = PrecacheModel("models/enhancedrockets2/w_rocket_bkheavy1.mdl", true);
-		iRocketBKHeavy2 = PrecacheModel("models/enhancedrockets2/w_rocket_bkheavy2.mdl", true);
-		iRocketBKEngy = PrecacheModel("models/enhancedrockets2/w_rocket_bkengy.mdl", true);
+		if(g_bBotkillers == true)
+		{
+			iRocketBKHeavy1 = PrecacheModel("models/enhancedrockets2/w_rocket_bkheavy1.mdl", true);
+			iRocketBKHeavy2 = PrecacheModel("models/enhancedrockets2/w_rocket_bkheavy2.mdl", true);
+			iRocketBKEngy = PrecacheModel("models/enhancedrockets2/w_rocket_bkengy.mdl", true);
+		}
 	}
 }
 
@@ -350,6 +370,10 @@ public int MenuHandler_Settings(Menu hSettings, MenuAction iAction, int iClient,
 			if (g_cvEnableFestives.BoolValue)
 			{
 				PrintToChat(iClient, "[ER2] Festive Rockets have been enabled.");
+				if(!g_bFestives)
+				{
+					PrintToChat(iClient, "[ER2] You need to reload the map");
+				}
 			}
 			else
 			{
@@ -374,6 +398,10 @@ public int MenuHandler_Settings(Menu hSettings, MenuAction iAction, int iClient,
 			if (g_cvEnableBotkillers.BoolValue)
 			{
 				PrintToChat(iClient, "[ER2] Botkiller Rockets have been enabled.");
+				if(!g_bBotkillers)
+				{
+                                	PrintToChat(iClient, "[ER2] You need to reload the map");
+				}
 			}
 			else
 			{
@@ -427,6 +455,7 @@ public int MenuHandler_Settings(Menu hSettings, MenuAction iAction, int iClient,
 			if (g_cvEnableBotkillers.BoolValue)
 			{
 				PrintToChat(iClient, "[ER2] Botkiller Rockets have been enabled.");
+                                PrintToChat(iClient, "[ER2] You need to reload the map");
 			}
 			else
 			{
@@ -644,7 +673,7 @@ public void Projectile_RocketSpawnPost(int iRocket)
 				// Festive Rocket Launcher
 				case 658: 
 				{
-					if (g_cvEnableFestives.BoolValue)
+					if (g_cvEnableFestives.BoolValue && g_bFestives)
 					{
 						SetRocketModel(iRocket, iRocketFestive);
 
@@ -687,7 +716,7 @@ public void Projectile_RocketSpawnPost(int iRocket)
 				// Festive Black Box
 				case 1085: 
 				{
-					if (g_cvEnableFestives.BoolValue)
+					if (g_cvEnableFestives.BoolValue && g_bFestives)
 					{
 						SetRocketModel(iRocket, iRocketFestiveBlackBox);
 						// 6 - RED, 7 - BLU
@@ -730,7 +759,7 @@ public void Projectile_RocketSpawnPost(int iRocket)
 					/* Do nothing */
 				}
 			}
-			if(g_cvEnableBotkillers.BoolValue == true)
+			if(g_cvEnableBotkillers.BoolValue == true && g_bBotkillers == true)
 			{
 				switch(iWeaponId)
 				{
