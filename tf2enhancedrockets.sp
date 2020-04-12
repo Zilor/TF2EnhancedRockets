@@ -241,7 +241,10 @@ public void OnMapStart()
 		}
 		iRocketDirectHit = PrecacheModel("models/enhancedrockets2/w_rocket_directhit.mdl", true);
 		iRocketBlackBox = PrecacheModel("models/enhancedrockets2/w_rocket_blackbox.mdl", true);
-		iRocketFestiveBlackBox = PrecacheModel("models/enhancedrockets2/w_rocket_blackbox_festive.mdl", true);
+		if (g_bFestives == true)
+                {
+			iRocketFestiveBlackBox = PrecacheModel("models/enhancedrockets2/w_rocket_blackbox_festive.mdl", true);
+		}
 		iRocketLibertyLauncher = PrecacheModel("models/enhancedrockets2/w_rocket_libertylauncher.mdl", true);
 		iRocketOriginal	= PrecacheModel("models/enhancedrockets2/w_rocket_original.mdl", true);
 		iRocketRocketJumper = PrecacheModel("models/enhancedrockets2/w_rocket_rocketjumper.mdl", true);
