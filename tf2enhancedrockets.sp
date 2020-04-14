@@ -102,7 +102,7 @@ public void OnLibraryAdded(const char[] strName)
 
 public void OnMapStart()
 {
-	if(g_cvEnablePlugin.BoolValue == true)
+	if(g_cvEnablePlugin.BoolValue)
 	{
 		// Stock Rocket Enhanced/Festive Stock Rocket - Models created by N-Cog
 		AddFileToDownloadsTable("materials/models/enhancedrockets2/w_rocket_enhanced.vmt");
@@ -558,7 +558,7 @@ public int MenuHandler_RocketMenu(Menu hRocketMenu, MenuAction iAction, int iCli
 
 public void OnEntityCreated(int iEntity, const char[] strClassname)
 {
-	if(g_cvEnablePlugin.BoolValue == true)
+	if(g_cvEnablePlugin.BoolValue)
 	{
 		if(StrEqual(strClassname, "tf_projectile_rocket"))
 		{
@@ -679,7 +679,7 @@ public void Projectile_RocketSpawnPost(int iRocket)
 					/* Do nothing */
 				}
 			}
-			if(g_cvEnableBotkillers.BoolValue == true)
+			if(g_cvEnableBotkillers.BoolValue)
 			{
 				switch(iWeaponId)
 				{
