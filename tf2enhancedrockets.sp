@@ -405,57 +405,6 @@ public int MenuHandler_Settings(Menu hSettings, MenuAction iAction, int iClient,
 			}
 		}
 	}
-	else if (iAction == MenuAction_Select)
-	{
-		if (StrEqual(strInfo, "#desc"))
-		{
-			LogError("[ER2] Descriptive Entries: Player somehow selected option despite ITEMDRAW_RAWLINE. FIXME.");
-		}
-		else if (StrEqual(strInfo, "#plugin"))
-		{
-			if (g_cvEnablePlugin.BoolValue)
-			{
-				PrintToChat(iClient, "[ER2] Plugin has been enabled.");
-			}
-			else
-			{
-				PrintToChat(iClient, "[ER2] Plugin has been disabled.");
-			}
-		}
-		else if (StrEqual(strInfo, "#botkillers"))
-		{
-			if (g_cvEnableBotkillers.BoolValue)
-			{
-				PrintToChat(iClient, "[ER2] Botkiller Rockets have been enabled.");
-			}
-			else
-			{
-				PrintToChat(iClient, "[ER2] Botkiller Rockets have been disabled.");
-			}
-		}
-		else if (StrEqual(strInfo, "#tcdirecthit"))
-		{
-			if (g_cvEnableTCDirectHit.BoolValue)
-			{
-				PrintToChat(iClient, "[ER2] Team-Colored Direct Hit rockets have been enabled.");
-			}
-			else
-			{
-				PrintToChat(iClient, "[ER2] Team-Colored Direct Hit rockets have been disabled.");
-			}
-		}
-		else if (StrEqual(strInfo, "#tcrocketjumper"))
-		{
-			if (g_cvEnableTCRocketJumper.BoolValue)
-			{
-				PrintToChat(iClient, "[ER2] Team-Colored Rocket Jumper rockets have been enabled.");
-			}
-			else
-			{
-				PrintToChat(iClient, "[ER2] Team-Colored Rocket Jumper rockets have been disabled.");
-			}
-		}
-	}
 	else if (iAction == MenuAction_Cancel)
 	{
 		PrintToServer("Client %d's menu was cancelled.  Reason: %d", iClient, iParam2);
