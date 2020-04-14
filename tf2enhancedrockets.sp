@@ -581,97 +581,73 @@ public void Projectile_RocketSpawnPost(int iRocket)
 				// Stock Rocket Launcher, Renamed/Strange Stock Rocket Launcher
 				case 18, 205:
 				{
-					SetRocketModel(iRocket, iRocketEnhanced);
-
-					if (g_cvEnableAustraliums.BoolValue && TF2_IsWeaponAustralium(iWeapon))
-					{
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", 1);
-					}
-
-					SetEntProp(iRocket, Prop_Send, "m_nSkin", 0);
+					SetRocketModel(iRocket, iRocketEnhanced, (g_cvEnableAustraliums.BoolValue && TF2_IsWeaponAustralium(iWeapon) ? 1 : 0 ));
 				}
 				// Festive Rocket Launcher
 				case 658: 
 				{
 					if (g_cvEnableFestives.BoolValue)
 					{
-						SetRocketModel(iRocket, iRocketFestive);
-
-						// 2 = RED, 3 = BLU
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", GetClientTeam(iClient)-2);
+						SetRocketModel(iRocket, iRocketFestive, GetClientTeam(iClient)-2);
 					}
 					else
 					{
 						SetRocketModel(iRocket, iRocketEnhanced);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", 0);
 					}
 				}
 				// All the various "Decorated" Rocket Launchers.
 				case 15006, 15014, 15028, 15043, 15052, 15057, 15081, 15104, 15015, 15129, 15130, 15150: 
 				{
 					SetRocketModel(iRocket, iRocketEnhanced);
-					SetEntProp(iRocket, Prop_Send, "m_nSkin", 0); // 0 - Normal
 				}
 				// Direct Hit
 				case 127: 
 				{
-					SetRocketModel(iRocket, iRocketDirectHit);
 					// 8 - Non-Teamcolored, 9 - RED, 10 - BLU
-					SetEntProp(iRocket, Prop_Send, "m_nSkin", (g_cvEnableTCDirectHit.BoolValue ? 0 : GetClientTeam(iClient)-2));
+					SetRocketModel(iRocket, iRocketDirectHit, (g_cvEnableTCDirectHit.BoolValue ? 0 : GetClientTeam(iClient)-2));
+
 				}
 				// Black Box
 				case 228: 
 				{
-					SetRocketModel(iRocket, iRocketBlackBox);
 					// 4 - Normal, 5 - Australium
-					if (g_cvEnableAustraliums.BoolValue && TF2_IsWeaponAustralium(iWeapon))
-					{
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", 1);
-					}
-					else
-					{
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", 0);
-					}
+					SetRocketModel(iRocket, iRocketBlackBox, (g_cvEnableAustraliums.BoolValue && TF2_IsWeaponAustralium(iWeapon) ? 1 : 0));
+
 				}
 				// Festive Black Box
 				case 1085: 
 				{
 					if (g_cvEnableFestives.BoolValue)
 					{
-						SetRocketModel(iRocket, iRocketFestiveBlackBox);
 						// 6 - RED, 7 - BLU
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", (GetClientTeam(iClient)-2));
+						SetRocketModel(iRocket, iRocketFestiveBlackBox, (GetClientTeam(iClient)-2));
+
 					}
 					else
 					{
 						SetRocketModel(iRocket, iRocketBlackBox);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", 0);
 					}
 				}
 				// Rocket Jumper
 				case 237: 
 				{
-					SetRocketModel(iRocket, iRocketRocketJumper);
 					// 13 - Non-Teamcolored, 14 - Optional BLU
-					SetEntProp(iRocket, Prop_Send, "m_nSkin", (g_cvEnableTCRocketJumper.BoolValue ? 0 : GetClientTeam(iClient)-2));
+					SetRocketModel(iRocket, iRocketRocketJumper, (g_cvEnableTCRocketJumper.BoolValue ? 0 : GetClientTeam(iClient)-2));
 				}
 				// Liberty Launcher
 				case 414: 
 				{
 					SetRocketModel(iRocket, iRocketLibertyLauncher);
-					SetEntProp(iRocket, Prop_Send, "m_nSkin", 0);
 				}
 				// The Original
 				case 513: 
 				{
 					SetRocketModel(iRocket, iRocketOriginal);
-					SetEntProp(iRocket, Prop_Send, "m_nSkin", 0);
 				}
 				// Beggar's Bazooka
 				case 730: 
 				{
 					SetRocketModel(iRocket, iRocketBeggarsBazooka);
-					SetEntProp(iRocket, Prop_Send, "m_nSkin", 0);
 				}
 				// Air Strike
 				case 1104: 
@@ -686,50 +662,42 @@ public void Projectile_RocketSpawnPost(int iRocket)
 					// Silver Botkiller Rocket Launcher Mk.I
 					case 800: 
 					{
-						SetRocketModel(iRocket, iRocketBKHeavy1);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", GetClientTeam(iClient)-2);
+						SetRocketModel(iRocket, iRocketBKHeavy1, GetClientTeam(iClient)-2);
 					}
 					// Gold Botkiller Rocket Launcher Mk.I
 					case 809: 
 					{
-						SetRocketModel(iRocket, iRocketBKHeavy1);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", GetClientTeam(iClient));
+						SetRocketModel(iRocket, iRocketBKHeavy1, GetClientTeam(iClient));
 					}
 					// Rust Botkiller Rocket Launcher Mk.I
 					case 889: 
 					{
-						SetRocketModel(iRocket, iRocketBKHeavy1);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", GetClientTeam(iClient)+2);
+						SetRocketModel(iRocket, iRocketBKHeavy1, GetClientTeam(iClient)+2);
 					}
 					// Blood Botkiller Rocket Launcher Mk.I
 					case 898: 
 					{
-						SetRocketModel(iRocket, iRocketBKHeavy1);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", GetClientTeam(iClient)+4);
+						SetRocketModel(iRocket, iRocketBKHeavy1, GetClientTeam(iClient)+4);
 					}
 					// Carbonado Botkiller Rocket Launcher Mk.I
 					case 907: 
 					{
 						SetRocketModel(iRocket, iRocketBKHeavy2);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", 0);
 					}
 					// Diamond Botkiller Rocket Launcher Mk.I
 					case 916: 
 					{
-						SetRocketModel(iRocket, iRocketBKHeavy2);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", 1);
+						SetRocketModel(iRocket, iRocketBKHeavy2, 1);
 					}
 					// Silver Botkiller Rocket Launcher Mk.II
 					case 965: 
 					{
-						SetRocketModel(iRocket, iRocketBKEngy);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", GetClientTeam(iClient)-2);
+						SetRocketModel(iRocket, iRocketBKEngy, GetClientTeam(iClient)-2);
 					}
 					// Gold Botkiller Rocket Launcher Mk.II
 					case 974: 
 					{
-						SetRocketModel(iRocket, iRocketBKEngy);
-						SetEntProp(iRocket, Prop_Send, "m_nSkin", GetClientTeam(iClient));
+						SetRocketModel(iRocket, iRocketBKEngy, GetClientTeam(iClient));
 					}
 				}
 			}
@@ -738,7 +706,7 @@ public void Projectile_RocketSpawnPost(int iRocket)
 }
 
 // Thanks Benoist3012 for the tip about using m_nModelIndexOverrides!
-void SetRocketModel(int iRocket, int iModelIndex = 0)
+void SetRocketModel(int iRocket, int iModelIndex = 0, int iSkin = 0)
 {
 	if(!HasEntProp(iRocket, Prop_Send, "m_nModelIndexOverrides"))
 	{
@@ -749,6 +717,7 @@ void SetRocketModel(int iRocket, int iModelIndex = 0)
 	{
 		SetEntProp(iRocket, Prop_Send, "m_nModelIndexOverrides", iModelIndex, _, i);
 	}
+	SetEntProp(iRocket, Prop_Send, "m_nSkin", iSkin);
 }
 
 // Australium weapon check.
