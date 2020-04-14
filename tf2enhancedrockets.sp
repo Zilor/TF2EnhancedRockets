@@ -21,6 +21,15 @@
 
 #define PLUGIN_VERSION "19w34a-GMD"
 
+#define TFWeapon_Direct_Hit 127
+#define TFWeapon_Black_Box 228
+#define TFWeapon_Festive_Black_Box 1085
+#define TFWeapon_Rocket_Jumper 237
+#define TFWeapon_Liberty_Launcher 414
+#define TFWeapon_The_Original 513
+#define TFWeapon_Beggars_Bazooka 730
+#define TFWeapon_AirStrike 1104
+
 ConVar gcvEnableTCDirectHit;
 ConVar gcvEnableTCRocketJumper;
 
@@ -154,33 +163,26 @@ public void Projectile_RocketSpawnPost(int iRocket)
 	int iWeaponId = GetEntProp(iWeapon, Prop_Send, "m_iItemDefinitionIndex");
 	switch(iWeaponId)
 	{
-		// Direct Hit
-		case 127: 
+		case TFWeapon_Direct_Hit: 
 			SetRocketModel(iRocket, giRocketDirectHit, (gcvEnableTCDirectHit.BoolValue ? 0 : GetClientTeam(iClient)-2));
 
-		// Black Box, Festive Black Box
-		case 228, 1085: 
+		case TFWeapon_Black_Box, TFWeapon_Festive_Black_Box: 
 			SetRocketModel(iRocket, giRocketBlackBox);
 
-		// Rocket Jumper
-		case 237: 
+		case TFWeapon_Rocket_Jumper: 
 			SetRocketModel(iRocket, giRocketRocketJumper, (gcvEnableTCRocketJumper.BoolValue ? 0 : GetClientTeam(iClient)-2));
 
-		// Liberty Launcher
-		case 414: 
+		case TFWeapon_Liberty_Launcher: 
 			SetRocketModel(iRocket, giRocketLibertyLauncher);
 
-		// The Original
-		case 513: 
+		case TFWeapon_The_Original: 
 			SetRocketModel(iRocket, giRocketOriginal);
 
-		// Beggar's Bazooka
-		case 730:
+		case TFWeapon_Beggars_Bazooka:
 			SetRocketModel(iRocket, giRocketBeggarsBazooka);
 
 		/*
-		// Air Strike
-		case 1104:
+		case TFWeapon_AirStrike:
 			SetRocketModel(iRocket, giRocketAirStrike);
 		*/
 	}
