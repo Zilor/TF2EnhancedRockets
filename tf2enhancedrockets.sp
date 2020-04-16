@@ -157,7 +157,7 @@ public void Projectile_RocketSpawnPost(int iRocket)
 	int iClient = GetEntPropEnt(iRocket, Prop_Data, "m_hOwnerEntity");
 	int iWeapon = GetEntPropEnt(iClient, Prop_Send, "m_hActiveWeapon");
 	
-	if(!iWeapon || !IsValidEdict(iWeapon))
+	if(!IsValidEdict(iWeapon))
 		return;
 		
 	int iWeaponId = GetEntProp(iWeapon, Prop_Send, "m_iItemDefinitionIndex");
